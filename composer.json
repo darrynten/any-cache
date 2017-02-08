@@ -11,7 +11,11 @@
         "phpunit/phpunit": "~5.0",
         "mockery/mockery": "dev-master",
         "doctrine/cache": "^1.6",
-        "symfony/cache": "^3.2"
+        "symfony/cache": "~3.0",
+        "symfony/dependency-injection": "~2.8|~3.0",
+        "symfony/http-kernel": "~2.8|~3.0",
+        "illuminate/contracts": "^5.4",
+        "illuminate/cache": "^5.4"
     },
 
     "suggest": {
@@ -27,6 +31,6 @@
         "psr-4": {
             "DarrynTen\\AnyCache\\": "src/"
         },
-        "exclude-from-classmap": ["/Tests/"]
+        "exclude-from-classmap": ["/Tests/", "/tests/"]
     }
 }
