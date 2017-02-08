@@ -7,7 +7,8 @@ interface CacheInterface
     /**
      * Determine if an item exists in the cache.
      *
-     * @param  string  $key
+     * @param string $key
+     *
      * @return bool
      */
     public function has($key);
@@ -15,8 +16,9 @@ interface CacheInterface
     /**
      * Retrieve an item from the cache by key.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param string $key
+     * @param mixed  $default
+     *
      * @return mixed
      */
     public function get($key, $default = null);
@@ -24,8 +26,9 @@ interface CacheInterface
     /**
      * Retrieve an item from the cache and delete it.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param string $key
+     * @param mixed  $default
+     *
      * @return mixed
      */
     public function pull($key, $default = null);
@@ -33,10 +36,9 @@ interface CacheInterface
     /**
      * Store an item in the cache.
      *
-     * @param  string  $key
-     * @param  mixed   $value
-     * @param  \DateTime|int  $minutes
-     * @return void
+     * @param string        $key
+     * @param mixed         $value
+     * @param \DateTime|int $minutes
      */
     public function put($key, $value, $minutes);
 }

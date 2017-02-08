@@ -2,8 +2,13 @@
 
 namespace DarrynTen\AnyCache;
 
-use DarrynTen\AnyCache\Adapter\ArrayCache;
+use DarrynTen\AnyCache\Adapter\Factory;
 
+/**
+ * The main entry point of he AnyCache module.
+ *
+ * Exposes an uniform API for access to the active caching adapter
+ */
 class Cache implements CacheInterface
 {
     /**
@@ -11,17 +16,31 @@ class Cache implements CacheInterface
      */
     private $adapter;
 
-    public function __construct($config = null)
+    /**
+     * Constructs the cache facade and invokes the factory to instantiate the actual cache.
+     *
+     * @param mixed|null $artifact A framework specific artifact to be used for to get access to it's cache, e.g. registry, service container, etc
+     * @param Factory    $factory  Optional. The cache adapter factory to be used - defaults to the one provided with the module
+     */
+    public function __construct($artifact = null, Factory $factory = null)
     {
-        // That's just a placeholder for previewing the module
-        // all the detection must be performed here or in a factory to guess the best adapter
-        // leaving hardcoded the fallback for now
+        if ($factory === null) {
+            $factory = new Factory();
+        }
 
-        $this->adapter = new ArrayCache();
+        try {
+            $this->adapter = $artifact !== null ? $factory->createByArtifact($artifact) : $factory->createByContext();
+        } catch (\Exception $exception) {
+            // ignore all errors an just fallback to the default adapter
+        }
+
+        if ($this->adapter === null) {
+            $this->adapter = $factory->createDefaultAdapter();
+        }
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function has($key)
     {
@@ -29,7 +48,7 @@ class Cache implements CacheInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function get($key, $default = null)
     {
@@ -37,7 +56,7 @@ class Cache implements CacheInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function pull($key, $default = null)
     {
@@ -45,7 +64,7 @@ class Cache implements CacheInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put($key, $value, $minutes)
     {
