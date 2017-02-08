@@ -2,8 +2,10 @@
 
 namespace DarrynTen\AnyCache\Adapter;
 
-use Cache;
 use DarrynTen\AnyCache\CacheInterface;
+
+use Illuminate\Cache\CacheManager;
+use Illuminate\Contracts\Cache\Store;
 
 /**
  * The Laravel Cache implementation.
@@ -13,6 +15,21 @@ use DarrynTen\AnyCache\CacheInterface;
 class LaravelCache implements CacheInterface
 {
     /**
+     * @var CacheManager|Store
+     */
+    private $cacheManager;
+
+    /**
+     * Constructor
+     *
+     * @param CacheManager $cacheManager
+     */
+    public function __construct(CacheManager $cacheManager)
+    {
+        $this->cacheManager = $cacheManager;
+    }
+
+    /**
      * Determine if an item exists in the cache.
      *
      * @param  string $key
@@ -20,7 +37,7 @@ class LaravelCache implements CacheInterface
      */
     public function has($key)
     {
-        return Cache::has($key);
+        return $this->cacheManager->has($key);
     }
 
     /**
@@ -32,7 +49,7 @@ class LaravelCache implements CacheInterface
      */
     public function get($key, $default = null)
     {
-        return Cache::get($key, $default = null);
+        return $this->cacheManager->get($key, $default);
     }
 
     /**
@@ -44,7 +61,7 @@ class LaravelCache implements CacheInterface
      */
     public function pull($key, $default = null)
     {
-        return Cache::pull($key, $default);
+        return $this->cacheManager->pull($key, $default);
     }
 
     /**
@@ -57,6 +74,6 @@ class LaravelCache implements CacheInterface
      */
     public function put($key, $value, $minutes)
     {
-        Cache::put($key, $value, $minutes);
+        $this->cacheManager->put($key, $value, $minutes);
     }
 }
