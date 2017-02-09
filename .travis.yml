@@ -11,4 +11,4 @@ before_script:
   - travis_retry composer install --prefer-dist --no-interaction
 
 script:
-  - vendor/bin/phpunit
+  - bin/phpunit
