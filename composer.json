@@ -1,0 +1,36 @@
+{
+    "name": "darrynten/any-cache",
+    "description": "Adapter designed to add Framework Agnosticism for Caching within PHP Packages.",
+    "type": "library",
+
+    "require": {
+        "php": "^5.5.9 || ^7.0"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "~5.0",
+        "mockery/mockery": "dev-master",
+        "doctrine/cache": "^1.6",
+        "symfony/cache": "~3.0",
+        "symfony/dependency-injection": "~2.8|~3.0",
+        "symfony/http-kernel": "~2.8|~3.0",
+        "illuminate/contracts": "^5.4",
+        "illuminate/cache": "^5.4"
+    },
+
+    "suggest": {
+        "doctrine/cache": "Use any Doctrine cache driver for cache",
+        "symfony/cache": "Use any Symfony cache driver for cache"
+    },
+
+    "config": {
+        "bin-dir": "bin"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "DarrynTen\\AnyCache\\": "src/"
+        },
+        "exclude-from-classmap": ["/Tests/", "/tests/"]
+    }
+}
