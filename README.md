@@ -6,7 +6,7 @@ Supports PHP 5.5+
 
 ### Install
 
-```
+```bash
 composer require darrynten/any-cache
 ```
 
@@ -59,7 +59,7 @@ are already in place.
 
 Create a new instance.
 
-```
+```php
 use DarrynTen\AnyCache;
 
 $this->cache = new AnyCache()
@@ -67,7 +67,7 @@ $this->cache = new AnyCache()
 
 Call
 
-```
+```php
 $key = 'foo';
 $value = 'bar';
 $time = 60;
