@@ -9,71 +9,83 @@ use Illuminate\Contracts\Cache\Store;
 
 /**
  * The Laravel Cache implementation.
+ *
  * Since the Laravel Cache uses closures, it cannot be serialized,
- * that's why I'm using the facade in here.
+ * that's why we use the facade.
+ *
+ * This is also why the tests for this class are somewhat incomplete,
+ * as I have not been able to mock the facade yet.
+ *
+ * @package AnyCache
  */
 class LaravelCache implements CacheInterface
 {
     /**
+     * The CacheManager instance
+     *
      * @var CacheManager|Store
      */
-    private $cacheManager;
+    private $_cacheManager;
 
     /**
      * Constructor
      *
-     * @param CacheManager $cacheManager
+     * @param CacheManager $cacheManager The Laravel CacheManager
      */
     public function __construct(CacheManager $cacheManager)
     {
-        $this->cacheManager = $cacheManager;
+        $this->_cacheManager = $cacheManager;
     }
 
     /**
      * Determine if an item exists in the cache.
      *
-     * @param  string $key
+     * @param string $key The cache key
+     *
      * @return bool
      */
     public function has($key)
     {
-        return $this->cacheManager->has($key);
+        return $this->_cacheManager->has($key);
     }
 
     /**
      * Retrieve an item from the cache by key.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param string $key     The cache key
+     * @param mixed  $default The default value (optional)
+     *
      * @return mixed
      */
     public function get($key, $default = null)
     {
-        return $this->cacheManager->get($key, $default);
+        return $this->_cacheManager->get($key, $default);
     }
 
     /**
      * Retrieve an item from the cache and delete it.
      *
-     * @param  string $key
-     * @param  mixed $default
+     * @param string $key     The cache key
+     * @param mixed  $default The default value
+     *
      * @return mixed
      */
     public function pull($key, $default = null)
     {
-        return $this->cacheManager->pull($key, $default);
+        return $this->_cacheManager->pull($key, $default);
     }
 
     /**
      * Store an item in the cache.
      *
-     * @param  string $key
-     * @param  mixed $value
-     * @param  \DateTime|int $minutes
+     * @param string        $key     The cache key
+     * @param mixed         $value   The value
+     * @param \DateTime|int $minutes The cache time in minutes
+     *
      * @return void
      */
     public function put($key, $value, $minutes)
     {
-        $this->cacheManager->put($key, $value, $minutes);
+        $this->_cacheManager->put($key, $value, $minutes);
     }
 }

@@ -8,12 +8,16 @@ use DarrynTen\AnyCache\CacheInterface;
 class Psr6Cache implements CacheInterface
 {
     /**
+     * The PSR cache instance
+     *
      * @var CacheItemPoolInterface
      */
     protected $adapter;
 
     /**
-     * @param CacheItemPoolInterface $adapter
+     * Construct
+     *
+     * @param CacheItemPoolInterface $adapter The PsrCache
      */
     public function __construct(CacheItemPoolInterface $adapter)
     {
@@ -21,7 +25,10 @@ class Psr6Cache implements CacheInterface
     }
 
     /**
-     * @param string $key
+     * Check if has the requested key
+     *
+     * @param string $key The cache key
+     *
      * @return bool
      */
     public function has($key)
@@ -30,8 +37,11 @@ class Psr6Cache implements CacheInterface
     }
 
     /**
-     * @param string $key
-     * @param null $default
+     * Get the cached item
+     *
+     * @param string $key     The cache key
+     * @param null   $default The default value (optional)
+     *
      * @return mixed|null
      */
     public function get($key, $default = null)
@@ -45,8 +55,11 @@ class Psr6Cache implements CacheInterface
     }
 
     /**
-     * @param string $key
-     * @param null $default
+     * Pull from the cache
+     *
+     * @param string $key     The cache key
+     * @param null   $default The default value (optional)
+     *
      * @return null
      */
     public function pull($key, $default = null)
@@ -62,9 +75,13 @@ class Psr6Cache implements CacheInterface
     }
 
     /**
-     * @param string $key
-     * @param mixed $value
-     * @param \DateTime|int $minutes
+     * Put into the cache
+     *
+     * @param string        $key     The cache key
+     * @param mixed         $value   The item to be cached
+     * @param \DateTime|int $minutes The cache time in minutes
+     *
+     * @return void
      */
     public function put($key, $value, $minutes)
     {
