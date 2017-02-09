@@ -131,4 +131,3 @@ class LaravelCacheTest extends PHPUnit_Framework_TestCase
         // $cache->put('foo', 'bar', new \DateTime('+5 minutes'));
     }
 }
-
