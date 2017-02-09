@@ -9,16 +9,6 @@
     ],
     "homepage": "https://github.com/darrynten/any-cache",
     "license": "MIT",
-    "authors": [
-      {
-        "name": "Darryn Ten",
-        "link": "https://github.com/darrynten"
-      },
-      {
-        "name": "Alexander Marinov",
-        "link": "https://github.com/ssaki"
-      }
-    ],
 
     "require": {
         "php": "^5.5.9 || ^7.0"
