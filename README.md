@@ -2,7 +2,7 @@
 
 Adapter designed to add Framework Agnosticism for Caching within PHP Packages.
 
-Supports PHP 5.5+
+Supports PHP 5.6+
 
 ### Install
 
