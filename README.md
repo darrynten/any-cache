@@ -1,5 +1,10 @@
 ## any-cache
 
+![Travis Build Status](https://travis-ci.org/darrynten/any-cache.svg?branch=master)
+![StyleCI Status](https://styleci.io/repos/80923991/shield?branch=master)
+![Packagist Version](https://img.shields.io/packagist/v/darrynten/any-cache.svg)
+![MIT License](https://img.shields.io/github/license/darrynten/any-cache.svg)
+
 Adapter designed to add Framework Agnosticism for Caching within PHP Packages.
 
 Supports PHP 5.6+
