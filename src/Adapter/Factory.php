@@ -15,9 +15,6 @@ use Illuminate\Cache\CacheManager;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Foundation\Application;
 
-/**
- * Cache adapter factory.
- */
 class Factory
 {
     /**
@@ -53,7 +50,7 @@ class Factory
     /**
      * Tries to create an adapter based on the provided artifact.
      *
-     * @param mixed $object
+     * @param mixed $object A framework cache carifact
      *
      * @return CacheInterface|null
      */
@@ -84,7 +81,7 @@ class Factory
     /**
      * Creates a SymfonyCache adapter using either a cache instance or a service container instance.
      *
-     * @param AdapterInterface|ContainerInterface|mixed $object
+     * @param AdapterInterface|ContainerInterface|mixed $object Cache
      *
      * @return SymfonyCache|null
      */
@@ -110,7 +107,7 @@ class Factory
     /**
      * Creates a LaravelCache adapter using either a cache instance or a service container instance.
      *
-     * @param CacheManager|Container|mixed $object
+     * @param CacheManager|Container|mixed $object Cache
      *
      * @return LaravelCache|null
      */
@@ -135,7 +132,7 @@ class Factory
     /**
      * Creates a DoctrineCache using a driver instance.
      *
-     * @param Cache|mixed $object
+     * @param Cache|mixed $object Cache
      *
      * @return DoctrineCache|null
      */
@@ -153,7 +150,7 @@ class Factory
     /**
      * Creates a PSR-6 adapter for a compatible instance.
      *
-     * @param CacheItemPoolInterface|mixed $object
+     * @param CacheItemPoolInterface|mixed $object Cache
      *
      * @return Psr6Cache|null
      */

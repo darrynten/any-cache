@@ -1,4 +1,9 @@
 <?php
+/**
+ * This is not fully implemented yet
+ *
+ * Feel free to make it happen :)
+ */
 
 namespace DarrynTen\AnyCache\Adapter;
 
@@ -7,40 +12,46 @@ use DarrynTen\AnyCache\CacheInterface;
 class CodeIgniterCache implements CacheInterface
 {
     /**
-     * @var array
+     * The cache
+     *
+     * @var object $_cache The cache object
      */
-    private $cache;
+    private $_cache;
 
     /**
-     * @param array $driver
+     * Constructor
+     *
+     * @param array $driver The CI cache driver
      */
     public function __construct($driver)
     {
-        $this->cache = $driver;
+        $this->_cache = $driver;
     }
 
     /**
      * Determine if an item exists in the cache.
      *
-     * @param  string $key
+     * @param string $key The cache key
+     *
      * @return bool
      */
     public function has($key)
     {
-        return $this->cache->get($key) !== false;
+        return $this->_cache->get($key) !== false;
     }
 
     /**
      * Retrieve an item from the cache by key.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param string $key     The cache key
+     * @param mixed  $default The default value (optional)
+     *
      * @return mixed
      */
     public function get($key, $default = null)
     {
         if ($this->has($key)) {
-            return $this->cache->get($key);
+            return $this->_cache->get($key);
         }
 
         return $default;
@@ -49,15 +60,16 @@ class CodeIgniterCache implements CacheInterface
     /**
      * Retrieve an item from the cache and delete it.
      *
-     * @param  string $key
-     * @param  mixed $default
+     * @param string $key     The cache key
+     * @param mixed  $default The default value (optional)
+     *
      * @return mixed
      */
     public function pull($key, $default = null)
     {
         if ($this->has($key)) {
-            $cached = $this->cache->get($key);
-            $this->cache->delete($key);
+            $cached = $this->_cache->get($key);
+            $this->_cache->delete($key);
 
             return $cached;
         }
@@ -68,9 +80,10 @@ class CodeIgniterCache implements CacheInterface
     /**
      * Store an item in the cache.
      *
-     * @param  string $key
-     * @param  mixed $value
-     * @param  \DateTime|int $minutes
+     * @param string        $key     The cache key
+     * @param mixed         $value   The value to cache
+     * @param \DateTime|int $minutes The cache time in minutes
+     *
      * @return void
      */
     public function put($key, $value, $minutes)
@@ -81,6 +94,6 @@ class CodeIgniterCache implements CacheInterface
             $seconds = $minutes * 60;
         }
 
-        $this->cache->save($key, $value, $seconds);
+        $this->_cache->save($key, $value, $seconds);
     }
 }
