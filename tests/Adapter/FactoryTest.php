@@ -21,7 +21,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testArtifact()
     {
-        $cache = new AnyCache(\Doctrine\Common\Cache\Cache::class);
+        $cache = new AnyCache(Doctrine\Common\Cache\Cache::class);
 
         $this->assertInstanceOf(AnyCache::class, $cache);
     }
