@@ -16,7 +16,6 @@ use Illuminate\Cache\CacheManager;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Foundation\Application;
 
-
 class FactoryTest extends PHPUnit_Framework_TestCase
 {
     /** @test */
@@ -42,4 +41,3 @@ class FactoryTest extends PHPUnit_Framework_TestCase
         // Not working... How to throw?
     }
 }
-
