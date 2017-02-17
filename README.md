@@ -2,6 +2,7 @@
 
 ![Travis Build Status](https://travis-ci.org/darrynten/any-cache.svg?branch=master)
 ![StyleCI Status](https://styleci.io/repos/80923991/shield?branch=master)
+[![codecov](https://codecov.io/gh/darrynten/any-cache/branch/master/graph/badge.svg)](https://codecov.io/gh/darrynten/any-cache)
 ![Packagist Version](https://img.shields.io/packagist/v/darrynten/any-cache.svg)
 ![MIT License](https://img.shields.io/github/license/darrynten/any-cache.svg)
 
