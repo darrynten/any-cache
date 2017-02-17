@@ -5,6 +5,7 @@ namespace DarrynTen\AnyCache\Tests;
 use PHPUnit_Framework_TestCase;
 use DarrynTen\AnyCache\AnyCache;
 
+use Psr\Cache\CacheInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Doctrine\Common\Cache\Cache;
 
