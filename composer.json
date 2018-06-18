@@ -11,7 +11,7 @@
     "license": "MIT",
 
     "require": {
-        "php": "^5.5.9 || ^7.0"
+        "php": "^5.5.9 || ^7.1"
     },
 
     "require-dev": {
@@ -19,8 +19,8 @@
         "mockery/mockery": "dev-master",
         "doctrine/cache": "^1.7",
         "symfony/cache": "~4.1",
-        "symfony/dependency-injection": "4.1",
-        "symfony/http-kernel": "4.1",
+        "symfony/dependency-injection": "~2.8|~3.0|~4.1",
+        "symfony/http-kernel": "~2.8|~3.0|~4.1",
         "illuminate/contracts": "^5.6",
         "illuminate/cache": "^5.6"
     },
