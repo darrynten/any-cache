@@ -18,7 +18,7 @@
         "phpunit/phpunit": "~5.0",
         "mockery/mockery": "dev-master",
         "doctrine/cache": "^1.6",
-        "symfony/cache": "~3.0",
+        "symfony/cache": "~3.0|~4.0",
         "symfony/dependency-injection": "~2.8|~3.0",
         "symfony/http-kernel": "~2.8|~3.0",
         "illuminate/contracts": "^5.4",
